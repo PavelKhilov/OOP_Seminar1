@@ -6,51 +6,44 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        Product product1 = new Product();
-//        product1.brand = "ООО Источник";
-//        product1.name = "Бутылка с водой";
-//        product1.price = 100.15;
+        Product boxOfJuice1 = new BoxOfJuice("Моя семья", "Коробка1", 50, 1, "orange");
+        Product boxOfJuice2 = new BoxOfJuice("Фруктовый сад","Коробка2", 100, 2, "cherry");
+        Product boxOfJuice3 = new BoxOfJuice("Добрый","Коробка3", 200, 1, "pineapple");
+        Product boxOfJuice4 = new BoxOfJuice("Добрый", "Коробка4", 100, 2, "apple");
+        Product boxOfJuice5 = new BoxOfJuice("Фруктовый сад", "Коробка5", 250, 1, "mango");
+        Product boxOfJuice6 = new BoxOfJuice("Моя семья","Коробка6", 50, 2, "multifruit");
 
-        System.out.println(product1.displayInfo());
+        List<Product> boxOfJuice = new ArrayList<>();
+        boxOfJuice.add(boxOfJuice1);
+        boxOfJuice.add(boxOfJuice2);
+        boxOfJuice.add(boxOfJuice3);
+        boxOfJuice.add(boxOfJuice4);
+        boxOfJuice.add(boxOfJuice5);
+        boxOfJuice.add(boxOfJuice6);
 
-        Product product2 = new Product("Бутылка с молоком", 120.25);
-        product2.param2 = "..";
-        System.out.println(product2.displayInfo());
-
-//        product2.price = -60;
-//        product2.name = "_______";
-
-        System.out.println(product2.displayInfo());
-
-        Product product3 = new Product("ss", "__", 100);
-        product3.setPrice(10);
-        System.out.println(product3.displayInfo());
-
-        Product bottleOfWater1 = new BottleOfWater("Бутылка1", 100, 2);
-        Product bottleOfMilk1 = new BottleOfMilk("Молоко", 200,1, 10);
-        Product bottleOfWater2 = new BottleOfWater("Бутылка2", 100, 1);
-        Product bottleOfWater3 = new BottleOfWater("Бутылка3", 100, 2);
-        Product bottleOfWater4 = new BottleOfWater("Бутылка3", 100, 2);
-
-        String a = "123";
-        String aaaa = "123";
-        String s1 = new String("123");
-
-        List<Product> products = new ArrayList<>();
-        products.add(bottleOfWater1);
-        products.add(bottleOfMilk1);
-        products.add(bottleOfWater2);
-        products.add(bottleOfWater3);
-        products.add(bottleOfWater4);
-
-        VendingMachine vendingMachine = new VendingMachine(products);
-
-        BottleOfWater bottleOfWaterRes = vendingMachine.getBottleOfWater("Бутылка2", 1);
-        if (bottleOfWaterRes != null) {
+        VendingMachine vendingMachineJuice = new VendingMachine(boxOfJuice);
+        BoxOfJuice boxOfJuiceRes = vendingMachineJuice.getBoxOfJuice("Фруктовый сад", 2, "cherry");
+        if (boxOfJuiceRes != null) {
             System.out.println("Вы купили: ");
-            System.out.println(bottleOfWaterRes.displayInfo());
+            System.out.println(boxOfJuiceRes.displayInfo());
         } else {
-            System.out.println("Такой бутылки нет в автомате.");
+            System.out.println("Такого сока нет в автомате.");
+        }
+
+        boxOfJuiceRes = vendingMachineJuice.getBoxOfJuice("Добрый", 2, "apple");
+        if (boxOfJuiceRes != null) {
+            System.out.println("Вы купили: ");
+            System.out.println(boxOfJuiceRes.displayInfo());
+        } else {
+            System.out.println("Такого сока нет в автомате.");
+        }
+
+        boxOfJuiceRes = vendingMachineJuice.getBoxOfJuice("Моя семья", 1, "mango");
+        if (boxOfJuiceRes != null) {
+            System.out.println("Вы купили: ");
+            System.out.println(boxOfJuiceRes.displayInfo());
+        } else {
+            System.out.println("Такого сока нет в автомате.");
         }
     }
 }

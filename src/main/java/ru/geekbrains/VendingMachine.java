@@ -9,12 +9,13 @@ public class VendingMachine {
         this.products = products;
     }
 
-    public BottleOfWater getBottleOfWater(String name, int volume){
-        for (Product product: products) {
-            if (product instanceof BottleOfWater){
-                BottleOfWater bottle = ((BottleOfWater)product);
-                if (bottle.name.equals(name) && bottle.getVolume() == volume) {
-                    return bottle;
+    public BoxOfJuice getBoxOfJuice (String brand, int volume, String fruit){
+        for (Product boxOfJuice : products) {
+            if (boxOfJuice instanceof BoxOfJuice){
+                BoxOfJuice boxJuice = ((BoxOfJuice) boxOfJuice);
+                if (boxJuice.getBrand().equals(brand) && boxJuice.getVolume() == volume &&
+                        boxJuice.getFruit().equalsIgnoreCase(fruit)) {
+                    return boxJuice;
                 }
             }
         }

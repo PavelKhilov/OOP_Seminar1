@@ -40,7 +40,7 @@ public class Product {
     String param4;
 
     {
-        System.out.println("Initializer");
+        // System.out.println("Initializer");
         param1 = 100;
         param2 = "...";
         param3 = true;
@@ -60,7 +60,7 @@ public class Product {
     }
 
     public Product(String brand, String name, double price) {
-        System.out.println("Constructor");
+        // System.out.println("Constructor");
         if(brand.length() < 3)
             this.brand = "Noname";
         else
@@ -72,9 +72,6 @@ public class Product {
         if(price <= 0 )
             throw new RuntimeException("Некорректная сумма товара.");
         this.price = price;
-//            this.price = 1;
-//        else
-//            this.price = price;
     }
 
     /**
